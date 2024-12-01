@@ -1,0 +1,106 @@
+/* src/components/Tile.css */
+
+.tile {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5vmin;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.tile-new {
+  animation: appear 0.4s ease-out;
+}
+
+.tile-merged {
+  animation: merge 0.4s ease-in-out;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes merge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Стили для разных значений плиток */
+.tile-2 {
+  background-color: #eee4da;
+  color: #776e65;
+}
+
+.tile-4 {
+  background-color: #ede0c8;
+  color: #776e65;
+}
+
+.tile-8 {
+  background-color: #f2b179;
+  color: #f9f6f2;
+}
+
+.tile-16 {
+  background-color: #f59563;
+  color: #f9f6f2;
+}
+
+.tile-32 {
+  background-color: #f67c5f;
+  color: #f9f6f2;
+}
+
+.tile-64 {
+  background-color: #f65e3b;
+  color: #f9f6f2;
+}
+
+.tile-128 {
+  background-color: #edcf72;
+  color: #f9f6f2;
+  font-size: 4vmin;
+}
+
+.tile-256 {
+  background-color: #edcc61;
+  color: #f9f6f2;
+  font-size: 4vmin;
+}
+
+.tile-512 {
+  background-color: #edc850;
+  color: #f9f6f2;
+  font-size: 4vmin;
+}
+
+.tile-1024 {
+  background-color: #edc53f;
+  color: #f9f6f2;
+  font-size: 3vmin;
+}
+
+.tile-2048 {
+  background-color: #edc22e;
+  color: #f9f6f2;
+  font-size: 3vmin;
+}

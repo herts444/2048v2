@@ -1,0 +1,121 @@
+/* src/components/Game.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  overflow: hidden;
+  touch-action: none;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.game-container {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */ /* Можно убрать, если нужно */
+  padding: 10px;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+h1 {
+  font-size: 8vmin;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.score {
+  font-size: 6vmin;
+  margin-bottom: 20px;
+  color: #666666;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2vmin;
+  background-color: #bbada0;
+  padding: 2vmin;
+  border-radius: 5px;
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.grid-cell {
+  background-color: #cdc1b4;
+  border-radius: 5px;
+  position: relative;
+}
+
+.game-over {
+  font-size: 6vmin;
+  color: red;
+  text-align: center;
+}
+
+button {
+  padding: 1vmin 2vmin;
+  font-size: 6vmin;
+  background-color: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #9f8b76;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  padding: 1vmin 2vmin;
+  font-size: 4vmin;
+  margin: 0 1vmin;
+  background-color: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controls button:disabled {
+  background-color: #cdc1b4;
+  cursor: not-allowed;
+}
+
+.controls button:hover:not(:disabled) {
+  background-color: #9f8b76;
+}
+
