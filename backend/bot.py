@@ -1,19 +1,26 @@
-from aiogram import Bot, Dispatcher, types, executor
+from aiogram import Bot, Dispatcher
+from aiogram.types import (
+    InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo, Message
+)
+from aiogram.filters import Command
+import asyncio
 
 bot = Bot(token='7842471718:AAFcwBAh-qpntz2Y0-s5BGQ2TTCM4gtCFM0')
-dp = Dispatcher(bot)
+dp = Dispatcher()
 
-@dp.message_handler(commands=['start'])
-async def send_welcome(message: types.Message):
-    # Inline-кнопка с Mini App
-    keyboard = types.InlineKeyboardMarkup()
-    mini_app_button = types.InlineKeyboardButton(
+@dp.message(Command("start"))
+async def send_welcome(message: Message):
+    mini_app_button = InlineKeyboardButton(
         text="Запустить игру",
-        web_app=types.WebAppInfo(url="https://ced9-194-242-100-72.ngrok-free.app")
+        web_app=WebAppInfo(url="https://hotgaming.lol")
     )
-    keyboard.add(mini_app_button)
 
-    await message.reply("Запустить игру:", reply_markup=keyboard)
+    # Передаем сразу inline_keyboard в виде вложенного списка списков
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[mini_app_button]])
+    await message.answer("Запустить игру:", reply_markup=keyboard)
+
+async def main():
+    await dp.start_polling(bot)
 
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    asyncio.run(main())

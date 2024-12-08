@@ -8,18 +8,33 @@ const path = require('path');
 const leaderboardRoutes = require('./routes/leaderboard');
 const db = require('./database');
 
+// Загрузка переменных окружения
 dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware для обработки CORS
+app.use(cors({
+  origin: '*', // Разрешить запросы от любых источников
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Дополнительные заголовки для CORS (если потребуется)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+// Middleware для обработки JSON
 app.use(express.json());
 
-// Маршруты
+// Подключение маршрутов
 app.use('/api/leaderboard', leaderboardRoutes);
 
-// Главная страница
+// Главная страница для проверки доступности
 app.get('/', (req, res) => {
   res.send('Backend сервера работает');
 });

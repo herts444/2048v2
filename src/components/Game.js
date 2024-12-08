@@ -28,7 +28,7 @@ function Game() {
   // Мемоизация функции fetchLeaderboard
   const fetchLeaderboard = useCallback(async () => {
     try {
-      const response = await axios.get(' https://1cae-194-242-100-72.ngrok-free.app/api/leaderboard');
+      const response = await axios.get('https://app.hotgaming.lol/api/leaderboard');
       setLeaderboard(response.data);
     } catch (err) {
       console.error('Ошибка при получении Leaderboard:', err);
@@ -39,7 +39,7 @@ function Game() {
   const updateLeaderboard = useCallback(
     async (newScore) => {
       try {
-        await axios.post(' https://1cae-194-242-100-72.ngrok-free.app/api/leaderboard', {
+        await axios.post('https://app.hotgaming.lol/api/leaderboard', {
           id: currentUser.id,
           name: currentUser.name,
           score: newScore,
